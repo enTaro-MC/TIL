@@ -1,6 +1,8 @@
-# TIL
+# TIL (Today I Learned)
 
-## UI Interaction Senior, 2020 TIL (Today I Learned)
+## UI Interaction Senior, 2020
+
+<p><a href="./WEEK01.md">1주차 학습내용</a></p>
 
 ### 1주차
 
