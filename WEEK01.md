@@ -584,6 +584,26 @@ audi = 'AUDI';
 
 **let, const로 선언된 변수는 window 객체에서 접근 불가능**
 
+#### IIFE -> BLOCK
+
+자바스크립트는 함수영역을 지원하므로 전역오염 방지를 위해 IIFE 패턴을 사용하였으나 ES6의 let ,const 키워드 사용시 블럭영역을 지원하므로 IIFE 패턴을 사용안해도 된다.
+
+```Javascript
+//IIFE 패턴
+(function (){
+  var game = 'starcrft';
+}());
+
+console.log(game) // 참조 에러 발생
+
+
+-------------------------------
+{
+   const game = 'starcrft';
+}
+console.log(game) // 참조 에러 발생
+```
+
 </details>
 
 <!-- // 1주 2일차  -->
