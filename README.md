@@ -13,3 +13,5 @@
 - [ES6] 블록영역 ⎼ let & const (14분 36초, 14분 05초)
 - [ES6] 블록영역 ⎼ IIFE → Block
 - JavaScript 클로저
+- 숫자 / 수학 객체
+- 문자 객체
