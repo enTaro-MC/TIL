@@ -10,8 +10,10 @@
 - 함수 영역 vs 블록 영역
 - 호이스팅 / 스코프 체이닝
 - 즉시 실행 함수 식
-- [ES6] 블록영역 ⎼ let & const (14분 36초, 14분 05초)
+- [ES6] 블록영역 ⎼ let & const
 - [ES6] 블록영역 ⎼ IIFE → Block
 - JavaScript 클로저
 - 숫자 / 수학 객체
 - 문자 객체
+- [ES6] 문자 ⎼ Template Literal
+- [ES6] 문자 ⎼ String Addtions
