@@ -702,7 +702,7 @@ add10(50); // x=10 y=100 z=50   결과 값: 160
 
 <!-- 1주 4일차 -->
 
-<details open>
+<details >
 
 <summary>4일차</summary>
 
@@ -956,3 +956,139 @@ var kms = kmc.replace('Cheol', 'Sic'); // 'KimMinSic'
 ```
 
 </details>
+
+<!-- 1주 5일차 -->
+
+<details open>
+
+<summary>5일차</summary>
+
+#### ES6 Teamplate Literal
+
+ES6의 템플릿 리터럴을 사용하면 문자열 이스케이프를 사용 안해도 된다.
+
+```javascript
+// ES5
+var comment = 'ES6 이전은 \'이스케이프\' "따옴표" 를 사용해야 합니다';
+
+// ES6
+let comment = `ES6 이후로는 이스케이프 '따옴표'를 사용 안해도 됩니다.`;
+```
+
+문자열 접합
+
+```javascript
+// ES5
+var company = {
+  brand: '테슬라',
+  fuel: '전기',
+  product: '자동차',
+};
+
+console.log(
+  company.brand + '는 ' + company.fuel + company.product + ' 생산을 하는 회사다'
+);
+
+// ES6
+const company = {
+  brand: '테슬라',
+  fuel: '전기',
+  product: '자동차',
+};
+
+console.log(
+  `${company.brand}는 ${company.fuel}${company.product} 생산을 하는 회사다`
+);
+```
+
+ES6의 템플릿 리터럴은 띄어씌기, 개행 자바스크립트 표현식을 지원한다.
+ES6로 진행되는 작업에는 적극 활용!
+
+### 확장된 문자 객체
+
+#### .includes()
+
+```javascript
+//ES5 문자열 표함 여부 확인방법
+window.navigator.userAgent.indexOf('Chrome') > -1;
+//일치하는 문자열이 있을경우  true 반환
+
+//ES6의 .includes() 사용
+window.navigator.userAgent.includes('Chrome');
+//일치하는 문자열이 있을을경우  true 반환
+```
+
+#### .startsWith() 어떤 문자열이 특정문자로 시작하는지 확인하여 Boolean 값으로 반환
+
+```javascript
+//ES5
+var car = '제네시스 그랜져 소나타 아반떼';
+car.substr(0, 4) === '제네시스'; //true
+car.substr(5, 1) === '그'; //true
+
+//헬퍼 함수
+function startsWidth(word, find, start) {
+  start = start || 0;
+  return word.substr(start, find.length) === find;
+}
+startsWidth(car, '그랜져', 5); //trues
+
+//ES6는 startsWith 자체적으로 지원
+var car = '제네시스 그랜져 소나타 아반떼';
+car.startsWith('그랜져', 5); //true
+```
+
+#### .endsWith() 어떤 문자열이 특정문자로 끝나는지 확인하여 Boolean 값으로 반환
+
+```javascript
+//ES5
+var car = '제네시스 그랜져 소나타 아반떼';
+var index = car.length - 3;
+car.substr(index, 3) === '아반떼'; //true
+
+//헬퍼 함수
+function endsWith(word, find, end) {
+  end = (end || word.length) - find.length;
+  //전체 글자수에서 찾고자 하는 문자의 글자수를 뺀다.
+  var lastIndex = word.indexOf(find, end);
+  return lastIndex !== -1 && lastIndex === end;
+}
+
+endsWith(car, '아반떼'); //true
+endsWith(car, '소나타', 12); // true
+
+//ES6는 endsWith 자체적으로 지원
+var car = '제네시스 그랜져 소나타 아반떼';
+car.endsWith('아반떼'); //true
+car.endsWith('소나타', 12); //true
+```
+
+#### .repeat() 특정문자열을 특정개수만큼 반복한 후 새로운 문자열 반환
+
+```javascript
+//ES5 문자열 반복
+var repeatWord = '반복할 문자열 ';
+
+function repeat(word, count) {
+  //카운트 초기화
+  count = count || 0; // 입력한 count가 있을 경우 count, 없을 경우 0
+  if (count === 0) {
+    return '';
+  }
+  var combine = word; // 반복할 문자열 복사
+  while (--count) {
+    combine += word;
+  }
+  return combine;
+}
+
+repeat(repeatWord, 5); // "반복할 문자열 반복할 문자열 반복할 문자열 반복할 문자열 반복할 문자열 "
+
+//ES6 문자열 반복
+const repetaWord = 'ES6 오오오 ';
+repetaWord.repeat(5); //"ES6 오오오 ES6 오오오 ES6 오오오 ES6 오오오 ES6 오오오 "
+```
+
+</details>
+
+<!-- // 1주 5일차 -->
