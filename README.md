@@ -22,3 +22,7 @@
 ### 2주차
 
 - 함수 객체
+- [ES6] 함수 ⎼ Arrow Function
+- [ES6] 함수 ⎼ Default Parameter
+- [ES6] 함수 ⎼ Rest Parameter
+- [ES6] 함수 ⎼ Spread Operator
