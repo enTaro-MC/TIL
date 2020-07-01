@@ -26,3 +26,5 @@
 - [ES6] 함수 ⎼ Default Parameter
 - [ES6] 함수 ⎼ Rest Parameter
 - [ES6] 함수 ⎼ Spread Operator
+- 배열 객체
+- [ES6] 배열 ⎼ Array Additions
