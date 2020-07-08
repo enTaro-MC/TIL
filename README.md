@@ -28,3 +28,13 @@
 - [ES6] 함수 ⎼ Spread Operator
 - 배열 객체
 - [ES6] 배열 ⎼ Array Additions
+
+### 3주차
+
+- 객체 / 상속
+- 생성자 / 프로토타입
+- 객체지향 프로그래밍
+- 객체 지향 프로그래밍 용어 풀이
+- [ES6] 객체 ⎼ Shorthand Properties (4분 43초)
+- [ES6] 객체 ⎼ Object Enhancements (10분 19초, 8분 45초)
+- [ES6] 객체 ⎼ Destructuring Assignment (15분 02초)
