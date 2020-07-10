@@ -35,6 +35,7 @@
 - 생성자 / 프로토타입
 - 객체지향 프로그래밍
 - 객체 지향 프로그래밍 용어 풀이
-- [ES6] 객체 ⎼ Shorthand Properties (4분 43초)
-- [ES6] 객체 ⎼ Object Enhancements (10분 19초, 8분 45초)
-- [ES6] 객체 ⎼ Destructuring Assignment (15분 02초)
+- [ES6] 객체 ⎼ Shorthand Properties
+- [ES6] 객체 ⎼ Object Enhancements
+- [ES6] 객체 ⎼ Destructuring Assignment
+- [ES6] Class
