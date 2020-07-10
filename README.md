@@ -39,3 +39,4 @@
 - [ES6] 객체 ⎼ Object Enhancements
 - [ES6] 객체 ⎼ Destructuring Assignment
 - [ES6] Class
+- [ES6] Map, WeakMap
