@@ -1,0 +1,51 @@
+# TIL
+
+UI Interaction Senior, 2020 TIL (Today I Learned)
+
+## 4주차
+
+<!-- 4주 1일차  -->
+<details open>
+
+<summary>1일차</summary>
+
+## 문서 프로그래밍 인터페이스
+
+### DOM API (Document Object Model API)
+
+자주 사용되는 DOM API
+
+#### DOM 선택 API 메서드
+
+- getElementById
+- getElemnetsByTagName()
+- getElementsByClassName() (IE 9+)
+- querySelector() (IE 8+ CSS2 선택자로 제한, IE 9+)
+- querySelectorAll()
+- mathches() (IE9+ msMatcheSelctor() )
+
+⚠️ querySelector(), querySelectorAll() 메서드로 수집된 집합은 라이브 상태가 아니다. 문서의 변경내용이 즉각 반영되지 않는다.
+
+#### Node 속성
+
+Node는 HTML을 구성하는 모든것을 말한다. (html요소, 빈줄, 공백 등등)
+
+- childNodes: 특정요소의 직계 자식노드들을 수집 (children: 자식요소 노드들 수집)
+- firstChild: 첫번째 자식노드
+- lastChild: 마지막 자식노드
+- nextSibling: 다음에 인접한 형제노드 (nextElementSibling을 활용하여 다음 요소를 찾자)
+- previousSibling: 이전에 인접한 형제노드 (previousElementSibling를 활용하여 이전 요소를 찾자)
+- parentNode: 부모 노드
+- nodeType
+  - Node.ELEMENT_NODE: 1
+  - Node.TEXT_NODE: 3
+  - Node.CDATA_SECTION_NODE: 4
+  - Node.PROCESSING_INSTRUCTION_NODE: 7
+  - Node.COMMENT_NODE: 8
+  - Node.DOCUMENT_NODE: 9
+  - Node.DOCUMENT_TYPE_NODE: 10
+  - Node.DOCUMENT_FRAGMENT_NODE: 11
+- nodeName: 해당 요소의 태그 이름을 대문자로 반환
+- nodeValue: 노드내용을 수집 (textContent를 더 활용 IE9+ 지원 )
+</details>
+<!-- // 4주 1일차  -->

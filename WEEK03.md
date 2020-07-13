@@ -562,10 +562,491 @@ sebaschan.legs;
 <!-- // 3주 2일차  -->
 
 <!-- 3주 3일차  -->
+<details>
+
+<summary>3일차</summary>
+
+### [ES6] Shorthand Properties
+
+ES6는 객체의 속성과 값의 이름이 같다면 키값만 입력하는 속기형 작성법을 지원한다.
+
+```js
+
+var games = ['스타크래프트', '리그 오브 레전드', '오버워치', '워크래프트'];
+var animations = ['진격의 거인', '원피스', '강철의 연금술사', '나루토'];
+
+var movies = [
+  {
+    title: '기생충',
+    director: '봉준호',
+  },
+  {
+    title: '인셉션',
+    director: '크리스토퍼 놀란',
+  },
+];
+// ES5
+var favorites = {
+  games : games
+  animations: animations,
+  movies: movies,
+};
+
+// ES6
+let favorites = {
+  games,
+  animations,
+  movies,
+};
+```
+
+### Object Enhancements
+
+```js
+// 향상된 객체 표기법
+(function (global) {
+  'use strict';
+
+  let name = 'SM7',
+    maker = 'RenaultSamsung',
+    boost = 'powerUp';
+
+  //private 감춰진 속성 외부에서 접근 불가
+  let _wheel = 4;
+
+  const car = {
+    go() {}, // 메서드의 경우 go: function(){}  방식에서 변경
+    // 계산된 속성
+    ['stop']() {},
+    [boost]() {},
+
+    // getter
+    get wheel() {
+      return this._wheel;
+    },
+
+    set wheel(new_wheel) {
+      this._wheel = new_wheel;
+    },
+  };
+
+  const newbee = {
+    name,
+    maker,
+    __proto__car: car, // car의 능력을 상속받는다
+    [`${name.replace(7, 5)}${maker}${
+      boost.slice(0, 1).toUpperCase() + boost.slice(0, 1)
+    }`]() {},
+  };
+
+  global.car = car;
+})(window);
+```
+
+### Symbol
+
+고유하고 수정 불가능한 데이터 타입이며 주로 객체 속성들의 식별자로 사용된다.
+
+```js
+((global = window) => {
+  let _wheel = Symbol('wheel');
+
+  global.car = {
+    // 등록된 심볼을 속성으로 사용
+    [_wheel]: 4,
+    get wheel() {
+      return this[_wheel];
+    },
+    set wheel(new_wheel) {
+      if (typeof new_wheel !== 'number') {
+        throw new Error('전달 인자 유형은 숫자여야 합니다.');
+      }
+      this[_wheel] = new_wheel > 4 ? new_wheel : 4;
+    },
+  };
+})();
+```
+
+### 구조 분해 할당
+
+```js
+// 객체 구조 분해 할당
+
+// ES5
+var game = {
+  title: '디아블로',
+  webPage: 'https://diablo4.blizzard.com/ko-kr/',
+  developer: 'blizzard',
+};
+
+var title = game.title;
+var webPage = game.webPage;
+var developer = game.developer;
+
+// ES6
+let game = {
+  title: '디아블로',
+  webPage: 'https://diablo4.blizzard.com/ko-kr/',
+  developer: 'blizzard',
+};
+
+let { title, webPage, developer } = game;
+
+//IIFI 패턴  ()
+((global = window, { title, webPage, developer }) => {
+  console.log(title);
+  console.log(webPage);
+  console.log(developer);
+})(null, game);
+
+// 필요한 속성만 가져올수도 있다.
+((global = window, { title }) => {
+  console.log(title);
+  // console.log(webPage);
+  // console.log(developer);
+})(null, game);
+
+((
+  global = window,
+  { title: gameTitle, webPage: promotionPage, developer: developCompany } // 특정한 변수로 지정해줄수 있다.
+) => {
+  console.log(gameTitle);
+  console.log(promotionPage);
+  console.log(developCompany);
+})(null, game);
+```
+
+```js
+// 배열 구조 분해
+
+const people = [
+  {
+    id: 1,
+    name: '이정도',
+    username: 'jd1386',
+    email: 'lee.jungdo@gmail.com',
+    phone: '010-3192-2910',
+  },
+  {
+    id: 2,
+    name: '김재완',
+    username: 'lastrites2018',
+    email: 'jaewan@gmail.com',
+    phone: '02-879-5000',
+  },
+  {
+    id: 3,
+    name: '김성은',
+    username: 'sunnysid3up',
+    email: 'sunny@daum.net',
+    phone: '010-4280-1991',
+  },
+  {
+    id: 4,
+    name: '이주연',
+    username: 'yyijoo',
+    email: 'jooyeon@gmail.com',
+    phone: '010-2940-1401',
+  },
+];
+
+// ES5
+people.forEach(function (person) {
+  var name = person.name;
+  var username = person.username;
+  var email = person.email;
+  var phone = person.phone;
+
+  console.log(name, username, email, phone);
+});
+
+// ES6
+
+people.forEach(({ name, username, email, phone }) => {
+  console.log(name, username, email, phone);
+});
+
+let [, , 김성은, 이주연] = people; // 순서 중요!
+function logEmail({ email }) {
+  console.log(email);
+}
+
+logEmail(김성은);
+logEmail(이주연);
+```
+
+</details>
 <!-- // 3주 3일차  -->
 
 <!-- 3주 4일차  -->
+<details >
+
+<summary>4일차</summary>
+
+### [ES6] Class
+
+ES6에서는 기존의 프로토타입 기반의 객체지향 프로그래밍 대신, 클래스기반의 객체지향 프로그래밍 방법을 사용할 수 있다.
+
+```js
+((global = window) => {
+  // ES5
+  //생성자 함수
+  function Dom(el) {
+    this.el = el;
+  }
+
+  // 스태틱 메서드
+  Dom.createEls = function () {};
+
+  Dom.prototype.init = function () {};
+  Dom.prototype.bind = function () {};
+
+  //ES6
+  class Dom {
+    // 생성자(클래스를 통해 객체를 생성할때 실행)
+    constructor(el) {
+      this.el = el;
+    }
+
+    // 스태틱 메서드 (클래스 메서드)
+    static createELs() {}
+
+    // 인스턴스 메서드
+    // prototype.init()
+    init() {}
+    bind() {}
+  }
+})();
+```
+
+- Class 는 함수가 아니므로 호이스트 되지 않는다.
+- Class는 식으로 사용 가능하다
+- Class는 내부에 변수를 작성 할수 없다.
+- Class는 콤마를 사용하지 않는다.
+
+```js
+// 클래스 선언 이전에 사용하면 참조 오류가 발생한다.
+
+new Game();
+class Game {}
+
+//Uncaught ReferenceError: Game is not defined 참조 오류 발생
+
+const Game = class {};
+```
+
+#### Private Data
+
+자바스크립트에서는 비공개 데이터를 공식적으로 지원하지 않는다. 관례적으로 \_ 언더바를 붙여 비공개 데이터라고 알린다.
+
+```js
+(() => {
+  class Coffee {
+    constructor(bean, type) {
+      // 공개 데이터
+      this.bean = bean;
+
+      // 비공개 데이터 (실제로 데이터가 보호되어 있지는 않고 있다.)
+      this._type = type;
+    }
+  }
+})();
+
+// Object.assign()  활용
+(() => {
+  class Coffee {
+    constructor(bean, type) {
+      // 비공개 데이터
+      // 완전한 데이터 비공개 관리가 가능하나, 메모리 누수가 발생한다.
+      // 설정도 불가능함
+      Object.assign(this, {
+        getBean() {
+          return bean;
+        },
+        getType() {
+          return type;
+        },
+      });
+    }
+  }
+})();
+
+// 심볼 + 게터 /세터 활용 (주의: Class를 여러번 사용하면 _bean의 데이터가 덮어씌여짐.)
+(() => {
+  let _bean = Symbol('bean');
+  class Coffee {
+    constructor(bean) {
+      // 비공개 데이터
+      this[_bean] = bean;
+    }
+
+    get pea() {
+      return this[_bean];
+    }
+    set pea(new_bean) {
+      this[_bean] = new_bean;
+    }
+  }
+})();
+
+// WeakMap 활용
+(() => {
+  let _bean = new WeakMap();
+
+  class Coffee {
+    constructor(bean) {
+      _bean.set(this, bean);
+    }
+
+    get pea() {
+      return _bean.get(this);
+    }
+    set pea(new_pea) {
+      _bean.set(this, new_pea);
+    }
+  }
+})();
+```
+
+#### Class 기반 상속
+
+```js
+class Coffee {
+  constructor(bean) {
+    this.bean = bean;
+  }
+  parch(time) {
+    console.log(`${time}만큼 ${this.bean}을 볶다`);
+  }
+}
+
+
+//extends 키워드 사용
+
+class Latte extend Coffee {
+  constructor(bean, milk){
+    super(bean);  // 상속받는 클래스의 생성자를 사용한다면 super 메서드 필수!
+    this.milk = milk;
+  }
+
+  // 메서드 오버라이드
+  parch(hour){
+    super.parch(hour/2);
+    console.log(`${hour/4}만큼 ${this.milk}를 넣고 끓인다`);
+  }
+}
+
+Object.getPrototypeOf(Latte) === Coffee;
+Latee.__proto__ === Coffee;
+
+
+// Object.setPorototypeOf()  클래스가 아닌 객체 상속
+
+const coffee = {
+  bean: 'arabica',
+  parch(time){console.log(`${time}만큼 ${this.bean}을 볶다`);}
+}
+const latte = {
+  milk: 'shake',
+  blend(source){console.log(`${source}와 ${this.milk} ${this.bean}을 혼합한다.`)}
+}
+
+Object.setPrototypeOf(latte, coffee);
+
+```
+
+</details>
 <!-- // 3주 4일차  -->
 
 <!-- 3주 5일차  -->
+<details open>
+
+<summary>5일차</summary>
+
+### [ES6] Map
+
+- Map 객체는 속성, 값 쌍으로 구성된 객체이다.
+- 객체는 문자, Symobol만 키(속성)로 사용 할수 있는 반면, 맵 객체는 어떤값도 키로 사용 가능하다.
+- 객체는 객체에 저장된 데이터 개수를 알수 없지만 맵은 .size 속성을 이용하면 알수 있다.
+- 데이터 콜렉션을 다룰때 사용하면 좋다.
+
+```js
+// 맵 객체 생성 (iterable)
+let capitals = new Map();
+
+// 아이템(키, 값) 추가
+capitals.set('한국', '서울');
+capitals.set('중국', '북경');
+capitals.set('미국', '워싱턴 D.C');
+
+console.log(capitals); // {"한국" => "서울", "중국" => "북경", "미국" => "워싱턴 D.C"}
+
+// 저장된 아이템 갯수 출력
+capitals.size; // 3
+
+// 저장된 아이템 출력
+capitals.get('한국');
+capitals.get('일본');
+
+// 저장된 키 값 확인
+if (!capitals.has('일본')) {
+  capitals.set('일본', '동경');
+}
+
+// 요소 삭제
+capitals.delete('일본'); // true
+capitals.delete('러시아'); //  없는데이터를 제거 할때 는 false
+
+// 모든 요소 삭제
+capitals.clear();
+```
+
+### [ES6] WeakMap
+
+```js
+// 데이터 (객체)
+let arr = [1, 3, 5, 7],
+  obj = { key: 'value' };
+
+// WeakMap 객체 생성
+let wmap = new WeakMap();
+
+// 아이템 추가
+wmap.set(arr, 'array').set(obj, 'object');
+
+// 아이템 사이즈
+wmap.size; // undefined
+
+// 객체가 아닌 데이터를 키값으로 추가 할 수 없다.
+wmap.set(true, 'yes'); // Uncaught TypeError: Invalid value used as weak map key at WeakMap.set
+
+// 아이템 소유여부 확인
+wmap.has(obj); // true
+
+// 아이템제거
+wmap.delete(arr); // true
+
+// 세트 순환
+// WeakMap은 열거가 불가능하므로 순환이 불가능하다.
+
+//사용 법
+
+// 비공개 데이터 관리
+(() => {
+  let_ = new WeakMap();
+  class OffCanvasMenu {
+    constructor(el, options) {
+      _.set(this, { el, options });
+    }
+
+    toggle() {
+      let $ = _.get(this);
+      $.el.classList.toggle('is-active');
+    }
+  }
+})();
+```
+
+</details>
+
 <!-- // 3주 5일차  -->
